@@ -9,11 +9,14 @@ class ProgressForm extends Component {
         date: "",
         quiz: "",
         content: "",
-        
+        id: null
         
        
         
       }
+
+
+      
 
       handleEdit(e, id){
        
@@ -23,7 +26,7 @@ class ProgressForm extends Component {
           date: this.state.date,
           quiz: this.state.quiz,
           content: this.state.content,
-          
+          id: this.state.id
           
           
       }
@@ -110,15 +113,15 @@ class ProgressForm extends Component {
 
 <div>
   <h1>Edit Progress Form</h1>
-  <form onSubmit={(e) => this.handleSubmit(e, this.props.id)} className="edit-newProgres-form" >
+  <form onSubmit={(e) => this.handleEdit(e, this.props.id)} className="edit-newProgres-form" >
 
-  <input onChange = {(e)=> this.setState({name: e.target.value})} value = {this.props.name} type="text" name="name" placeholder="Enter Name..." />
+  <input onChange = {(e)=> this.setState({name: e.target.value})} value = {this.state.name} type="text" name="name" placeholder= {this.props.name} />
     <br/>
-    <input onChange = {(e)=> this.setState({date: e.target.value})} value = {this.props.date} type="text" name="date" placeholder="Enter Date..." />
+    <input onChange = {(e)=> this.setState({date: e.target.value})} value = {this.state.date} type="text" name="date" placeholder={this.props.date}  />
     <br/>
-    <input onChange = {(e)=> this.setState({quiz: e.target.value})} value = {this.props.quiz} type="text" name="quiz" placeholder="Enter Quiz..." />
+    <input onChange = {(e)=> this.setState({quiz: e.target.value})} value = {this.state.quiz} type="text" name="quiz" placeholder={this.props.quiz} />
     <br/>
-    <input onChange = {(e)=> this.setState({content: e.target.value})} value = {this.props.content} type="text" name="content" placeholder="Enter Content..." />
+    <input onChange = {(e)=> this.setState({content: e.target.value})} value = {this.state.content} type="text" name="content" placeholder={this.props.content}  />
     <br/>
     <input type="submit" name="submit" value="Edit Progress Form" className="submit"/>
 

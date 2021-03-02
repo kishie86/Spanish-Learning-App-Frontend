@@ -3,18 +3,8 @@ import {NavLink} from 'react-router-dom'
 
 class ProgressFormCard extends Component {
 
-  state={
-   
-    name: "",
-    date: "",
-    quiz: "",
-    content: "",
-    editMode: false
-  }
 
-  
 
- 
   
 
   render() {

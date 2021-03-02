@@ -8,7 +8,7 @@ import PickLanguage from "./components/PickLanguage"
 import AboutUs from "./components/AboutUs"
 import ProgressFormInfo from "./components/ProgressFormInfo"
 import ProgressForm from "./components/ProgressForm"
-//import AuthDemo from "./authdemo";
+import AuthDemo from "./authdemo";
 
 import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 
@@ -49,8 +49,7 @@ class App extends Component {
     } else {
       return (
         <div className="please-log-in">
-          <h2>I'm sorry, I don't know who you are...</h2>
-          <h3>Please log in below!</h3>
+          <h2>Please log in below!</h2>
         </div>
       );
     }
@@ -164,7 +163,6 @@ class App extends Component {
             <span className="pretty-link">
               <br />
 
-              
 
               <button onClick={this.logOut}>Log Out</button>
             </span>
@@ -176,6 +174,9 @@ class App extends Component {
             Home 
           </Link>
             <br/>
+
+
+
           <Link to="/about">About Us</Link>
             <br/>
           <Link to="/picklanguage">Pick Language</Link>
@@ -186,12 +187,18 @@ class App extends Component {
             <br/>
           <Link to="/help">Help</Link>
             <br/>
+
+
          
-          <br />
-          <Link className="pretty-link" to="/auth">
         
+          <Link className="pretty-link" to="/auth">
+          Auth Check{" "}
+            {!this.state.loggedIn
+              ? "(Works better if you're logged in!)"
+              : "(Try it now you're logged in!)"}
+          </Link>{" "}
          
-          </Link>
+        
           <br />
           <Switch>
             <Route exact path="/">
@@ -209,6 +216,10 @@ class App extends Component {
             <Route exact path="/signup">
               {this.state.loggedIn ? <Redirect to="/" /> : <SignUp />}
             </Route>
+
+
+
+
 
             <Route  exact path="/About">
               <AboutUs  />
@@ -234,7 +245,7 @@ class App extends Component {
             
 
             <Route exact path="/auth">
-              
+                <AuthDemo loggedIn={this.state.loggedIn} />
             </Route>
           </Switch>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 class Api::V1::WordsController < ApplicationController
-
+    skip_before_action :authorized, only: [:create, :index ]
     def index
 
         render json: Word.all.to_json(word_serializer_option)

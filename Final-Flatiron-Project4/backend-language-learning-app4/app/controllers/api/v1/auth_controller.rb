@@ -1,33 +1,56 @@
 class Api::V1::AuthController < ApplicationController
 
-    def issue_token(payload)
-        JWT.encode(payload, Rails.application.secrets.secret_key_base, "HS256")
+  
+
+  #  skip_before_action :authorized, only: [:create, :auto_login], raise: false
+   
+    skip_before_action :authorized, only: [:auto_login, :index]
+    # ^ We are not requiring the Authorization header for the create method so a user can
+    # create an account without being logged in. If you forget this you WILL RUN INTO ISSUES
+    # Create in this context could also be called "log_in", but I am calling it "create"
+    #  as it is creating a JWT token
+
+  
+
+   
+  def create
+
+    
+    # Find the user by the params sent in through the login fetch params 
+    @user = User.find_by(username: user_login_params[:username])
+   
+    # User authenticate is a built in method that comes from BCrypt.
+    # This next line checks if the user exists, and also if the password given allows access
+    if @user && @user.authenticate(user_login_params[:password])
+      # encode_token method comes from ApplicationController (which we are inheriting from on line 1).
+      #this creates a variable with the value of our token 
+      @token = encode_token({ user_id: @user.id })
+     
+      # UserSerializer is a serializer in the serializers folder. To use this the active_model_serializers gem is needed.
+      # This helps clean the data that is sent out to limited attributes you want listed
+      render json: { user:@user, jwt: @token }, status: :accepted
+      
+      # Without a serializer or status the following line would suffice
+      #  render json: { user: @user, jwt: @token}
+      
+    else
+      # Vague error message for user security (never tell someone they got a specific input incorrect), adding a status code 
+      render json: { message: 'Invalid username or password' }, status: :unauthorized
     end
+  end
 
-    def log_in 
+    # Created this method to allow logging in automatically 
+  def auto_login
+    @token = params[:token]
+    # byebug
+    user = User.find(JWT.decode(@token, "put your secret password here", true, algorithm: 'HS256')[0]["user_id"])
+    render json: user
+  end
 
-    end 
+  private
 
-    def create 
-        user = User.create(name: params[:name], email: params[:email], password: params[:password])
-
-        if user 
-            user_jwt = issue_token({id: user.id})
-            cookies.signed[:jwt] = {value: user_jwt, httponly: true}
-            byebug
-            render json: { 
-                status: 'created',
-                logged_in: true,
-                email: user.email
-             }
-        else
-            render json: {status: 500, logged_in: false}
-        end
-    end
-
-    def logout 
-        cookies.delete :jwt 
-        render json: {logged_in: false}
-    end
+  def user_login_params
+    params.require(:user).permit(:username, :password)
+  end
     
 end

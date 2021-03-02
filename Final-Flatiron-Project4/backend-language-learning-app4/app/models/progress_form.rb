@@ -1,0 +1,3 @@
+class ProgressForm < ApplicationRecord
+ 
+end

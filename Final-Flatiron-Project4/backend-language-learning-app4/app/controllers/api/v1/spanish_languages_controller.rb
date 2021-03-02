@@ -1,5 +1,5 @@
 class Api::V1::SpanishLanguagesController < ApplicationController
-
+    skip_before_action :authorized, only: [:create, :index ]
     def index
 
         render json: SpanishLanguage.all.to_json(sl_serializer_option)

@@ -1,4 +1,5 @@
 class Api::V1::UserLanguagesController < ApplicationController
+    skip_before_action :authorized, only: [:create, :index ]
     def index
 
         render json: UserLanguage.all.to_json(ul_serializer_option)

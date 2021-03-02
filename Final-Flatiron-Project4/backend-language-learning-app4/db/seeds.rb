@@ -11,6 +11,7 @@ User.destroy_all
 SpanishLanguage.destroy_all
 UserLanguage.destroy_all
 Word.destroy_all
+ProgressForm.destroy_all
 
 
 u1 = User.create(username: "Kishana Liburd", email: "kishana.liburd@gmail.com", password: "cloud")
@@ -34,4 +35,10 @@ sw7 = Word.create(image: "https://i2.wp.com/ceklog.kindel.com/wp-content/uploads
 sw8 = Word.create(image: "https://cdn.cnn.com/cnnnext/dam/assets/200713171600-02-silk-road-cats-super-tease.jpg", english_word: "cat", non_english_word: "gata", spanish_language_id: sl1.id)
 sw9 = Word.create(image: "https://images.macrumors.com/t/Es8C43YkyLzlzzzDsE9KbmQ9dDI=/1600x0/article-new/2020/11/iphone-12-pro-max-verge.jpg", english_word: "phone", non_english_word: "telefono", spanish_language_id: sl1.id)
 sw10 = Word.create(image: "https://secure.img1-fg.wfcdn.com/im/19556338/resize-h600-w600%5Ecompr-r85/3444/34441276/Kitchen+%26+Dining+Chairs.jpg", english_word: "chair", non_english_word: "silla", spanish_language_id: sl1.id)
+
+pf1 = ProgressForm.create(name:"Kishana Liburd", date:"01-08-2021", quiz: "Quiz 1", content:"Would love to learn more verbs by next week.")
+pf2 = ProgressForm.create(name:"Richard Gaston", date:"01-17-2021", quiz: "Quiz 1", content:"Would love to practive full sentences.")
+pf3 = ProgressForm.create(name:"Timothy Richard", date:"02-12-2021", quiz: "Quiz 1", content:"Need to improve. I have some more studying to do.",)
+
+
 
