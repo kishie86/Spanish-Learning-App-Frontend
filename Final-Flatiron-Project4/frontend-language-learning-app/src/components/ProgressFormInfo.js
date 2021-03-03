@@ -11,7 +11,10 @@ function ProgressFormInfo(props) {
     {
     props.progress_forms.map((progress_form) => { 
     return <ProgressFormCard 
-    handleEdit={props.handleEdit} removeProgressForm = {props.removeProgressForm} progress_form={progress_form}
+    handleEdit={props.handleEdit} 
+    removeProgressForm = {props.removeProgressForm} 
+    progress_form={progress_form}
+    
     />
     
     

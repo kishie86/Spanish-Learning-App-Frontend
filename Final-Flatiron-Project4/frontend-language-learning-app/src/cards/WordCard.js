@@ -34,7 +34,7 @@ correctValue = () => {
     
         
         <h2> {this.props.word.english_word}</h2>
-        <h2> <img src={this.props.word.image}/></h2>
+        <h2> <img src={this.props.word.image} style={{width:300}} /></h2>
         {/* <h2> {this.props.word.non_english_word}</h2> */}
         <input onChange = {this.handleChange} value = {this.state.userinput} placeholder = {"Type word here"}/> 
       {this.state.userinput !== this.props.word.non_english_word ? <p style={{color: "red"}}>Try again</p> : <p style={{color: "green"}}> correct </p>  }

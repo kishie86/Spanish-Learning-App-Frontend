@@ -20,7 +20,8 @@ class ProgressForm extends Component {
 
       handleEdit(e, id){
        
-        //console.log(this.state)
+        console.log(e)
+
         let editProgressForm = {
           name: this.state.name,
           date: this.state.date,
@@ -29,7 +30,10 @@ class ProgressForm extends Component {
           id: this.state.id
           
           
+          
       }
+
+      
       //console.log(newProgressForm)
     
       let reqObj = {}
@@ -41,8 +45,8 @@ class ProgressForm extends Component {
     
       fetch(`http://localhost:3000/api/v1/progress_forms/${id}`, reqObj)
       .then(res => res.json())
-      .then(newProgressForm =>
-        this.props.addToProgressForm(newProgressForm))
+      .then(editProgressForm =>
+        this.props.addToProgressForm(editProgressForm))
         e.target.reset()
       }
 
@@ -104,9 +108,6 @@ class ProgressForm extends Component {
             
            </div>
           
-           
-
-           
 
 
 
@@ -115,7 +116,7 @@ class ProgressForm extends Component {
   <h1>Edit Progress Form</h1>
   <form onSubmit={(e) => this.handleEdit(e, this.props.id)} className="edit-newProgres-form" >
 
-  <input onChange = {(e)=> this.setState({name: e.target.value})} value = {this.state.name} type="text" name="name" placeholder= {this.props.name} />
+   <input onChange = {(e)=> this.setState({name: e.target.value})} value = {this.state.name} type="text" name="name" placeholder= {this.props.name} />
     <br/>
     <input onChange = {(e)=> this.setState({date: e.target.value})} value = {this.state.date} type="text" name="date" placeholder={this.props.date}  />
     <br/>
@@ -131,21 +132,17 @@ class ProgressForm extends Component {
 
           
           
-        
-
         );
      }
       
       }
-      
-
-    
-    
-
-       
-    
-  
-    
+   
   
 
 export default ProgressForm
+
+
+// (this.state.name.length > 1 ? editProgressForm.name = this.state.name: null)
+//       (this.state.date.length > 1 ? editProgressForm.date = this.state.date : null)
+//       (this.state.quiz.length > 1 ? editProgressForm.quiz = this.state.quiz : null)
+//       (this.state.content.length > 1 ? editProgressForm.content = this.state.content : null)

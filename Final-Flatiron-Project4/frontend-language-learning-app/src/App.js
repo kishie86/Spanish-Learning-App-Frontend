@@ -148,6 +148,7 @@ class App extends Component {
     
     return (
       <div className="main-div">
+        {this.displayGreeting()}
        
         <BrowserRouter>
           <Link className="pretty-link" to="/login">
@@ -240,7 +241,9 @@ class App extends Component {
               content={this.state.content}
               id={this.state.id}
               addToProgressForm={this.addToProgressForm} />
-              <ProgressFormInfo handleEdit={this.handleEdit} removeProgressForm = {this.removeProgressForm} progress_forms={this.state.progress_forms}/>
+              <ProgressFormInfo handleEdit={this.handleEdit} 
+              removeProgressForm = {this.removeProgressForm} 
+              progress_forms={this.state.progress_forms}/>
               </Route>
             
 

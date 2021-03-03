@@ -32,15 +32,24 @@ class login extends Component {
     })
       .then((r) => r.json())
       .then((response) => {
-        localStorage.token = response.jwt;
-        this.props.setCurrentUser(response.user);
+        console.log(response)
+        if (response.user){
+          this.props.setCurrentUser(response.user)
+          localStorage.token = response.jwt
+        }else{
+
+          
+          console.log(response.message)
+        }
+       
       });
   };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} >
+    
           <br />
           <input
             type="text"

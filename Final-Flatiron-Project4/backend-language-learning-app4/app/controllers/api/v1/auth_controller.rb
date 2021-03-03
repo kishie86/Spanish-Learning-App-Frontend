@@ -1,10 +1,6 @@
 class Api::V1::AuthController < ApplicationController
-
-  
-
-  #  skip_before_action :authorized, only: [:create, :auto_login], raise: false
    
-    skip_before_action :authorized, only: [:auto_login, :index]
+    skip_before_action :authorized, only: [:create, :index, :update]
     # ^ We are not requiring the Authorization header for the create method so a user can
     # create an account without being logged in. If you forget this you WILL RUN INTO ISSUES
     # Create in this context could also be called "log_in", but I am calling it "create"
