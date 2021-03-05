@@ -86,8 +86,8 @@ class ProgressForm extends Component {
     
       render() {
         return (
-         <div>
-            <div>
+          <div className="form-container">
+            <span className="progress-form">
               <h1>Progress Form</h1>
           <form onSubmit={(e) => this.handleSubmit(e)} className="add-newProgres-form" >
              
@@ -106,13 +106,14 @@ class ProgressForm extends Component {
               <input type="submit" name="submit" value="Create New Progress" className="submit"/>
             </form>
             
-           </div>
+           </span>
+           
           
 
 
 
 
-<div>
+<span className = "edit-progress-form">
   <h1>Edit Progress Form</h1>
   <form onSubmit={(e) => this.handleEdit(e, this.props.id)} className="edit-newProgres-form" >
 
@@ -127,7 +128,7 @@ class ProgressForm extends Component {
     <input type="submit" name="submit" value="Edit Progress Form" className="submit"/>
 
 </form>
-</div>
+</span>
 </div>
 
           

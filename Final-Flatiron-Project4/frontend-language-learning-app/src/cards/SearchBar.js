@@ -4,7 +4,7 @@ class SearchBar extends React.Component {
   render(){
   return (
 
-    <div className="ui large fluid icon input">
+    <div className="search-bar-card">
       <input onChange={(e) => this.props.searchBar(e.target.value)}
         type="text"
         placeholder= {"Search For Language"}

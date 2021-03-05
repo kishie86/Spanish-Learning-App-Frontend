@@ -4,7 +4,7 @@ import SearchBar from '../cards/SearchBar'
 function PickLanguage(props) {
     return( 
 
-    <div className ="pick-lang-options">
+    <div className = "spanish-lang-container">
  
     <SearchBar searchBar={props.searchBar} />    
     {

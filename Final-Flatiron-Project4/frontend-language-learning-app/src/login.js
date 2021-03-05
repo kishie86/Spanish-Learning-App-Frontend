@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import {
+MDBContainer,
+MDBRow,
+MDBCol,
+MDBCard,
+MDBCardBody,
+MDBIcon,
+MDBCardHeader,
+MDBBtn,
+MDBInput
+} from "mdbreact";
+
+
 class login extends Component {
   state = {
     username: "",
@@ -47,32 +64,67 @@ class login extends Component {
 
   render() {
     return (
-      <div>
+    
+
+<MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardHeader className="form-header deep-blue-gradient rounded">
+                <h3 className="my-3">
+                  <MDBIcon icon="lock" /> Login:
+                </h3>
+              </MDBCardHeader>
         <form onSubmit={this.login} >
     
-          <br />
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
-          <br />
-          <br />
-          <button type="submit">Submit</button>
+        <div className="grey-text">
+
+                  <MDBInput
+                    label="Username"
+                    icon="envelope"
+                    group
+                    name= "username"
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                    onChange={this.handleChange}
+                  />
+       
+                  <MDBInput
+                    label="Type your password"
+                    icon="lock"
+                    group
+                    name= "password"
+                    type="password"
+                    validate
+                    onChange={this.handleChange}
+                  />
+
+                </div>
+
+
+<div className="text-center mt-4">
+                <MDBBtn
+                  color="light-blue"
+                  className="mb-3"
+                  type="submit"
+                >
+            Login
+                </MDBBtn>
+     </div>
         </form>
-        <br />
-        <br />
-      </div>
+       
+     
+
+</MDBCardBody>
+</MDBCard>
+</MDBCol>
+</MDBRow>
+</MDBContainer>
+
     );
   }
 }
-
 export default login;

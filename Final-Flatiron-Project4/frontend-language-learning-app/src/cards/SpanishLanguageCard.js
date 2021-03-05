@@ -14,7 +14,7 @@ import {useHistory} from "react-router-dom"
 
   
     return (
-      <div className="sl-card">
+      <div className="spanish-lang-card">
     
     
         <h2 onClick = {handleRoute}>{props.spanish_language.name}</h2>

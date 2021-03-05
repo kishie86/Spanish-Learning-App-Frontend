@@ -5,11 +5,10 @@ class ProgressFormCard extends Component {
 
 
 
-  
-
   render() {
     return (
       <div className="progress-form-card">
+        <body>
     
         <h1>{this.props.progress_form.name}</h1>
         <h1>{this.props.progress_form.date}</h1>
@@ -27,6 +26,7 @@ class ProgressFormCard extends Component {
         <br>
         </br>
         <NavLink to="/"> <strong> Return to Homepage</strong></NavLink>
+        </body>
       </div>
     )
   }

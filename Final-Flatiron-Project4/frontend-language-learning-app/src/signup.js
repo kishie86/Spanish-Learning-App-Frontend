@@ -1,5 +1,21 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import SignInForm from './SignInForm'
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import {
+MDBContainer,
+MDBRow,
+MDBCol,
+MDBCard,
+MDBCardBody,
+MDBIcon,
+MDBCardHeader,
+MDBBtn,
+MDBInput
+} from "mdbreact";
 
 class signup extends Component {
   state = {
@@ -53,45 +69,78 @@ class signup extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.created ? (
-          <Redirect to="/login" />
-        ) : (
-          <div>
-            <div className="please-log-in">
-              <p>{this.state.errorMessage}</p>
-            </div>
-            <br />
-            <form onSubmit={this.createUser}>
-              <input
-                type="text"
-                name="email"
-                placeholder="Email"
-                onChange={this.handleChange}
-              />
-              <br />
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                onChange={this.handleChange}
-              />
-              <br />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-              />
-              <br />
-              <br />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        )}
-        <br />
-        <br />
-      </div>
+
+     
+      <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardHeader className="form-header deep-blue-gradient rounded">
+                <h3 className="my-3">
+                  <MDBIcon icon="lock" /> SignUp:
+                </h3>
+              </MDBCardHeader>
+        <form onSubmit={this.createUser} >
+    
+        <div className="grey-text">
+
+        <MDBInput
+                    label="Email"
+                    icon="envelope"
+                    group
+                    
+                    type="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                    onChange={this.handleChange}
+                  />
+
+                  <MDBInput
+                    label="Username"
+                    icon="envelope"
+                    group
+                    name= "username"
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                    onChange={this.handleChange}
+                  />
+       
+                  <MDBInput
+                    label="Type your password"
+                    icon="lock"
+                    group
+                    name= "password"
+                    type="password"
+                    validate
+                    onChange={this.handleChange}
+                  />
+
+                </div>
+
+
+    <div className="text-center mt-4">
+                <MDBBtn
+                  color="light-blue"
+                  className="mb-3"
+                  type="submit"
+                >
+            Signup
+                </MDBBtn>
+     </div>
+        </form>
+       
+     
+
+</MDBCardBody>
+</MDBCard>
+</MDBCol>
+</MDBRow>
+</MDBContainer>
+
     );
   }
 }

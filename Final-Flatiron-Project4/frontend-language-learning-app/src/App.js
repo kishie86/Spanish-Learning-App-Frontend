@@ -2,15 +2,20 @@ import React, { Component } from "react";
 import "./App.css";
 import SignUp from "./signup";
 import Login from "./login";
-import Home from "./home";
+import Home from "./Home"
 import LearnLanguage from "./components/LearnLanguage"
 import PickLanguage from "./components/PickLanguage"
 import AboutUs from "./components/AboutUs"
 import ProgressFormInfo from "./components/ProgressFormInfo"
 import ProgressForm from "./components/ProgressForm"
+import Help from "./components/Help"
 import AuthDemo from "./authdemo";
+import NavBar from "./cards/NavBar"
 
 import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+<Route exact path="/" component={Home}></Route>
+
+
 
 class App extends Component {
   state = {
@@ -147,79 +152,44 @@ class App extends Component {
     const filteredLanguage = this.state.spanish_languages.filter(spanish_languages => spanish_languages.name.toLowerCase().includes(this.state.searchBar.toLowerCase()) )
     
     return (
+
+      
+  
       <div className="main-div">
-        {this.displayGreeting()}
        
         <BrowserRouter>
-          <Link className="pretty-link" to="/login">
-            Login
-          </Link>
-          <span className="pretty-link"> </span>
-          <br/>
-          <Link className="pretty-link" to="/signup">
-            SignUp
-          </Link>
-          <br />
-          {this.state.loggedIn ? (
-            <span className="pretty-link">
-              <br />
+      
 
-
-              <button onClick={this.logOut}>Log Out</button>
-            </span>
-          ) : null}
-          <br />
-          
-            
-          <Link className="pretty-link" to="/">
-            Home 
-          </Link>
-            <br/>
-
-
-
-          <Link to="/about">About Us</Link>
-            <br/>
-          <Link to="/picklanguage">Pick Language</Link>
-            <br/>
-            <Link to="/learnlanguage">Learn Language</Link>
-            <br/>
-            <Link to="/progressform">Progress Form</Link>
-            <br/>
-          <Link to="/help">Help</Link>
-            <br/>
-
+       
+        <NavBar logOut= {this.logOut}  loggedIn={this.state.loggedIn}/>
 
          
-        
-          <Link className="pretty-link" to="/auth">
-          Auth Check{" "}
-            {!this.state.loggedIn
-              ? "(Works better if you're logged in!)"
-              : "(Try it now you're logged in!)"}
-          </Link>{" "}
-         
-        
-          <br />
+       
+
+
           <Switch>
-            <Route exact path="/">
-              <Home />
+
+    
+
+
+            <Route exact path="/" component={Home}>
+              <Home loggedIn={this.state.loggedIn} />
             </Route>
 
             <Route exact path="/login">
+            {this.displayGreeting()}
               {this.state.loggedIn ? (
                 <Redirect to="/" />
               ) : (
                 <Login setCurrentUser={this.setCurrentUser} />
               )}
+            
             </Route>
 
             <Route exact path="/signup">
+           
               {this.state.loggedIn ? <Redirect to="/" /> : <SignUp />}
             </Route>
-
-
-
 
 
             <Route  exact path="/About">
@@ -245,6 +215,14 @@ class App extends Component {
               removeProgressForm = {this.removeProgressForm} 
               progress_forms={this.state.progress_forms}/>
               </Route>
+
+
+              <Route exact path="/help">
+              <Help />
+              </Route>
+
+
+              
             
 
             <Route exact path="/auth">
