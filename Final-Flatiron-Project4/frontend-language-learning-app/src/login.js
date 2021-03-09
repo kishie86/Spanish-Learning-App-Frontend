@@ -22,6 +22,7 @@ class login extends Component {
   state = {
     username: "",
     password: "",
+    error_message: ""
   };
 
   handleChange = (event) => {
@@ -56,7 +57,7 @@ class login extends Component {
         }else{
 
           
-          console.log(response.message)
+          this.setState({error_message: response.message})
         }
        
       });
@@ -64,10 +65,12 @@ class login extends Component {
 
   render() {
     return (
-    
+  
+   
 
-<MDBContainer>
-      <MDBRow>
+<MDBContainer >
+<h4 style = {{color: "red", textAlign: "center" }}>{this.state.error_message}</h4>
+      <MDBRow className = "login">
         <MDBCol md="6">
           <MDBCard>
             <MDBCardBody>

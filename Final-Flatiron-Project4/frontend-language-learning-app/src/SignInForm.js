@@ -3,138 +3,116 @@ import { Redirect } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import {
-MDBContainer,
-MDBRow,
-MDBCol,
-MDBCard,
-MDBCardBody,
-MDBIcon,
-MDBCardHeader,
-MDBBtn,
-MDBInput
-} from "mdbreact";
+
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
 
 class SignInForm extends Component {
-  state = {
-    username: "",
-    password: "",
-  };
+  state={
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
+    name: "",
+    date: "",
+    quiz: "",
+    content: "",
+    id: null
+    
+   
+    
+  }
 
-    this.setState({
-      [name]: value,
-    });
-  };
 
-  login = (event) => {
-    event.preventDefault();
-    event.target.reset();
+  
 
-    const { username, password } = this.state;
-    const user = { username, password };
+  handleEdit(e, id){
+   
+    console.log(e)
 
-    fetch("http://localhost:3000/api/v1/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user }),
-    })
-      .then((r) => r.json())
-      .then((response) => {
-        console.log(response)
-        if (response.user){
-          this.props.setCurrentUser(response.user)
-          localStorage.token = response.jwt
-        }else{
+    let editProgressForm = {
+      name: this.state.name,
+      date: this.state.date,
+      quiz: this.state.quiz,
+      content: this.state.content,
+      id: this.state.id
+      
+      
+      
+  }
 
-          
-          console.log(response.message)
-        }
-       
-      });
-  };
+  
+  //console.log(newProgressForm)
+
+  let reqObj = {}
+    reqObj.headers = {"Content-Type":"application/json"}
+    reqObj.method = "PATCH"
+    reqObj.body = JSON.stringify(editProgressForm)
+    console.log(reqObj)
+  
+
+  fetch(`http://localhost:3000/api/v1/progress_forms/${id}`, reqObj)
+  .then(res => res.json())
+  .then(editProgressForm =>
+    this.props.addToProgressForm(editProgressForm))
+    e.target.reset()
+  }
+
+
+
+  handleSubmit(e){
+    e.preventDefault()
+    //console.log(this.state)
+    let newProgressForm = {
+      name: this.state.name,
+      date: this.state.date,
+      quiz: this.state.quiz,
+      content: this.state.content,
+      
+  }
+  //console.log(newProgressForm)
+
+  let reqObj = {}
+    reqObj.headers = {"Content-Type":"application/json"}
+    reqObj.method = "POST"
+    reqObj.body = JSON.stringify(newProgressForm)
+    console.log(reqObj)
+  
+
+  fetch('http://localhost:3000/api/v1/progress_forms', reqObj)
+  .then(res => res.json())
+  .then(newProgressForm =>
+    this.props.addToProgressForm(newProgressForm))
+    e.target.reset()
+  }
+
+
 
   render() {
     return (
-    
-
-<MDBContainer>
+      <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
-          <MDBCard>
-            <MDBCardBody>
-              <MDBCardHeader className="form-header deep-blue-gradient rounded">
-                <h3 className="my-3">
-                  <MDBIcon icon="lock" /> SignUp:
-                </h3>
-              </MDBCardHeader>
-        <form onSubmit={this.createUser} >
-    
-        <div className="grey-text">
-
-        <MDBInput
-                    label="Email"
-                    icon="envelope"
-                    group
-                    name= "email"
-                    type="text"
-                    validate
-                    error="wrong"
-                    success="right"
-                    onChange={this.handleChange}
-                  />
-
-                  <MDBInput
-                    label="Username"
-                    icon="envelope"
-                    group
-                    name= "username"
-                    type="text"
-                    validate
-                    error="wrong"
-                    success="right"
-                    onChange={this.handleChange}
-                  />
-       
-                  <MDBInput
-                    label="Type your password"
-                    icon="lock"
-                    group
-                    name= "password"
-                    type="password"
-                    validate
-                    onChange={this.handleChange}
-                  />
-
-                </div>
-
-
-    <div className="text-center mt-4">
-                <MDBBtn
-                  color="light-blue"
-                  className="mb-3"
-                  type="submit"
-                >
-            Signup
-                </MDBBtn>
-     </div>
-        </form>
-       
-     
-
-</MDBCardBody>
-</MDBCard>
-</MDBCol>
-</MDBRow>
-</MDBContainer>
-
+          <form onSubmit={(e) => this.handleSubmit(e)} className="add-newProgres-form">
+            <p className="h5 text-center mb-4">Progress Form</p>
+            <div className="grey-text">
+              <MDBInput onChange = {(e)=> this.setState({name: e.target.value})} name ="name" label="Your name" icon="user" group type="text" validate error="wrong"
+                success="right" />
+              <MDBInput onChange = {(e)=> this.setState({date: e.target.value})}  name ="date" label="Today's Date" icon="envelope" group type="text" validate error="wrong"
+                success="right" />
+              <MDBInput onChange = {(e)=> this.setState({quiz: e.target.value})} name ="quiz" label="Subject" icon="tag" group type="text" validate error="wrong" success="right" />
+              <MDBInput onChange = {(e)=> this.setState({content: e.target.value})} name = "content" type="textarea" rows="2" label="Your message" icon="pencil-alt" />
+            </div>
+            <div className="text-center">
+              <MDBBtn outline color="secondary">
+                Submit Progress Report
+                <MDBIcon far icon="paper-plane" className="ml-1" />
+              </MDBBtn>
+            </div> 
+          </form>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
     );
+    };
   }
-}
 
-export default SignInForm;
+
+
+export default SignInForm

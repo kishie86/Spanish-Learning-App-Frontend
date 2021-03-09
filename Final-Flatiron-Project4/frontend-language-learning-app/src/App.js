@@ -3,7 +3,7 @@ import "./App.css";
 import SignUp from "./signup";
 import Login from "./login";
 import Home from "./Home"
-import LearnLanguage from "./components/LearnLanguage"
+import LearnLanguage from "./container/LearnLanguage"
 import PickLanguage from "./components/PickLanguage"
 import AboutUs from "./components/AboutUs"
 import ProgressFormInfo from "./components/ProgressFormInfo"
@@ -11,6 +11,8 @@ import ProgressForm from "./components/ProgressForm"
 import Help from "./components/Help"
 import AuthDemo from "./authdemo";
 import NavBar from "./cards/NavBar"
+import StoredWords from "./container/StoredWords"
+import editForm from "./components/editForm"
 
 import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 <Route exact path="/" component={Home}></Route>
@@ -21,8 +23,10 @@ class App extends Component {
   state = {
     spanish_languages: [],
     words: [],
-    searchBar: "",
+    searchText: "",
     progress_forms: [],
+    storedWords: [],
+    showForm: true,
     user: {},
     loggedIn: false,
     name: "",
@@ -47,18 +51,36 @@ class App extends Component {
   displayGreeting = () => {
     if (this.state.loggedIn) {
       return (
+        <div className = "please-log-in">
         <h1 className="greeting-text">
+
           Welcome back {this.state.user.username}!
         </h1>
+        </div>
       );
     } else {
       return (
-        <div className="please-log-in">
+        <div className="please-log-in" >
           <h2>Please log in below!</h2>
         </div>
       );
     }
   };
+
+
+  homeGreeting = () => {
+    if (this.state.loggedIn) {
+      return (
+        <div className = "please-log-in">
+        <h4 className="greeting-text">
+
+          Welcome back {this.state.user.username}!
+        </h4>
+        </div>
+      );
+    } 
+  };
+  
 
   componentDidMount = () => {
     let token = localStorage.token;
@@ -148,8 +170,25 @@ class App extends Component {
       })
     }
 
+
+    addToStoredWords = (word) => {
+      if(!this.state.storedWords.includes(word))
+     this.setState({
+      storedWords: [...this.state.storedWords, word]
+     })
+      
+    }
+
+    removeStoredWords = (word) => {
+      this.setState({
+        storedWords: this.state.storedWords.filter(eachword => eachword.id !== word.id)
+      })
+    }
+  
+    
+
   render() {
-    const filteredLanguage = this.state.spanish_languages.filter(spanish_languages => spanish_languages.name.toLowerCase().includes(this.state.searchBar.toLowerCase()) )
+    const filteredLanguage = this.state.spanish_languages.filter(spanish_languages => spanish_languages.name.toLowerCase().includes(this.state.searchText.toLowerCase()) )
     
     return (
 
@@ -173,6 +212,7 @@ class App extends Component {
 
 
             <Route exact path="/" component={Home}>
+            {this.homeGreeting()}
               <Home loggedIn={this.state.loggedIn} />
             </Route>
 
@@ -201,16 +241,26 @@ class App extends Component {
               </Route>
 
             <Route exact path="/LearnLanguage">
-              <LearnLanguage words={this.state.words} />
+            <StoredWords  removeStoredWords= {this.removeStoredWords} storedWords={this.state.storedWords}/>
+              <LearnLanguage addToStoredWords={this.addToStoredWords} words={this.state.words} />
               </Route>
 
             <Route exact path="/ProgressForm">
-              <ProgressForm   name={this.state.name} 
+              <ProgressForm  name={this.state.name} 
               date={this.state.date}
               quiz={this.state.quiz}
               content={this.state.content}
               id={this.state.id}
               addToProgressForm={this.addToProgressForm} />
+
+              <editForm name={this.state.name} 
+              date={this.state.date}
+              quiz={this.state.quiz}
+              content={this.state.content}
+              id={this.state.id}/>
+
+              {/* {this.state.showForm ? <editForm/> : null}  */}
+          
               <ProgressFormInfo handleEdit={this.handleEdit} 
               removeProgressForm = {this.removeProgressForm} 
               progress_forms={this.state.progress_forms}/>

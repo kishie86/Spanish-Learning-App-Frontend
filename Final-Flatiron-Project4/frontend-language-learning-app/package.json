@@ -9,15 +9,21 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.0-beta2",
+    "email-validator": "^2.0.4",
+    "formik": "^2.2.6",
+    "indicative": "^7.4.4",
     "material-components-web": "^10.0.0",
+    "material-design-icons": "^3.0.1",
     "mdbreact": "^5.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-native-video": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

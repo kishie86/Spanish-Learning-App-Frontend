@@ -14,13 +14,13 @@ import {useHistory} from "react-router-dom"
 
   
     return (
-      <div className="spanish-lang-card">
+      <div className="spanish-lang-card" >
     
     
-        <h2 onClick = {handleRoute}>{props.spanish_language.name}</h2>
-        <h2>French</h2>
-        <h2>Portuguese</h2>
-        <h2>Hindi</h2>
+        <h2 class="my-5 h2" onClick = {handleRoute}> {props.spanish_language.name}</h2>
+        <h2> <img src={props.spanish_language.image} style={{width:300}} class="rounded-circle z-depth-2"/></h2>
+       
+        
 
         
         {/* <NavLink to="/NewEventForm"> <strong> Plan your next {this.props.event.name}</strong></NavLink> */}

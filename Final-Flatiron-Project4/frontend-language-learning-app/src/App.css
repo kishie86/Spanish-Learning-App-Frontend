@@ -1,8 +1,3 @@
-*{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box
-}
 
 
 .navbar {
@@ -56,8 +51,15 @@
   display: flex;
   align-items: center;
   justify-content: center; 
-  background-image: url('');
-  overflow: hidden;
+  
+}
+
+p{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+
 }
 
 .greeting-text{
@@ -70,10 +72,21 @@
 
 .home-page {
   padding-top: 100px;
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  overflow: hidden;
+  
 }
+
+
 
 .about-us {
   padding-top: 100px;
+  margin: 50px;
+  box-lines: border-box;
 }
 
 .pick-lang-page {
@@ -95,22 +108,52 @@
 
 .progress-form-card {
   padding-top: 50px;
+  flex-wrap: wrap;
+
+
+ 
+}
+
+.progress-options{
+  float: center;
+  align-content: space-around;
+  padding-top: 100px;
+
+  flex-wrap: wrap;
+  display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+
+  
+ 
+ 
 }
 
 .form-container {
   padding-top: 100px;
   display: flex;
-  
   justify-content: space-around ;
 }
 
 .progress-form {
   padding-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around ;
+  
+  
   
 }
 
-.edit-progress-form{
+.edit-progress-form {
   padding-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around ;
+
+  
  
 }
 
@@ -119,12 +162,31 @@
 }
 
 .login {
+  padding-top: 0px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-around 
+}
+
+.please-log-in {
+  
   padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+
 }
 
 .signup{
+ 
   padding-top: 100px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
 }
+
+
+
+
 
 
 

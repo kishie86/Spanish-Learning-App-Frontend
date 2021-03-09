@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import SignInForm from './SignInForm'
+import {Formik} from "formik"
+import EmailValidator from "email-validator"
+import Yup from "yup"
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
@@ -23,7 +26,7 @@ class signup extends Component {
     password: "",
     email: "",
     created: false,
-    errorMessage: "",
+    error_message: [],
   };
 
   handleChange = (event) => {
@@ -55,16 +58,19 @@ class signup extends Component {
     })
       .then((r) => r.json())
       .then((response) => {
+       
         if (response.status === "created") {
           this.setState({ created: true, errorMessage: "" });
+        }else{
+          this.setState({error_message: response.errors})
         }
       })
-      .catch((response) =>
-        this.setState({
-          errorMessage:
-            "Uh-oh! It didn't work...Make sure your server is running!",
-        })
-      );
+      // .catch((response) =>
+      //   this.setState({
+      //     errorMessage:
+      //       "Uh-oh! It didn't work...Make sure your server is running!",
+      //   })
+      // );
   };
 
   render() {
@@ -72,7 +78,8 @@ class signup extends Component {
 
      
       <MDBContainer>
-      <MDBRow>
+        {this.state.error_message.map(error => <h4 style = {{color: "red", textAlign: "center"}}> {error}</h4>)}
+      <MDBRow className = "signup">
         <MDBCol md="6">
           <MDBCard>
             <MDBCardBody>
@@ -89,6 +96,7 @@ class signup extends Component {
                     label="Email"
                     icon="envelope"
                     group
+                    name="email"
                     
                     type="email"
                     validate

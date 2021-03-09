@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
+import SignInForm from '../SignInForm'
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
+
+
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
 
 
 class ProgressForm extends Component {
@@ -86,64 +96,76 @@ class ProgressForm extends Component {
     
       render() {
         return (
-          <div className="form-container">
-            <span className="progress-form">
-              <h1>Progress Form</h1>
-          <form onSubmit={(e) => this.handleSubmit(e)} className="add-newProgres-form" >
-             
-              <input onChange = {(e)=> this.setState({name: e.target.value})} type="text" name="name" placeholder="Enter Name..." className="input-text"/>
-              <br/>
-              <input onChange = {(e)=> this.setState({date: e.target.value})} type="text" name="date" placeholder="Enter Date..." className="input-text"/>
-              <br/>
-              <input onChange = {(e)=> this.setState({quiz: e.target.value})}type="text" name="quiz" placeholder="Enter Quiz..." className="input-text"/>
-              <br/>
-              <input onChange = {(e)=> this.setState({content: e.target.value})} type="text" name="content" placeholder="Enter Content..." className="input-text"/>
-              <br/>
-              {/* <input onChange = {(e)=> this.setState({event_id: e.target.value})} type="text" name="event_id" placeholder="Enter Event..." className="input-text"/> */}
-              {/* <br/> */}
-              {/* <input onChange = {(e)=> this.setState({user_id: e.target.value})} type="text" name="event_id" placeholder="Enter Event..." className="input-text"/> */}
-              {/* <br/> */}
-              <input type="submit" name="submit" value="Create New Progress" className="submit"/>
-            </form>
+          
+          
+        
+          <MDBContainer >
             
-           </span>
-           
+          <MDBRow className = "progress-form " >
+            <MDBCol md="6">
+              <form onSubmit={(e) => this.handleSubmit(e)} className="add-newProgres-form">
+                <p className="h5 text-center mb-4">Progress Form</p>
+                <div className="grey-text">
+                  <MDBInput onChange = {(e)=> this.setState({name: e.target.value})} name ="name" label="Your name" icon="user" group type="text" validate error="wrong"
+                    success="right" />
+                  <MDBInput onChange = {(e)=> this.setState({date: e.target.value})}  name ="date" label="Today's Date" icon="far fa-calendar" group type="text" validate error="wrong"
+                    success="right" />
+                  <MDBInput onChange = {(e)=> this.setState({quiz: e.target.value})} name ="quiz" label="Subject" icon="far fa-file-alt" group type="text" validate error="wrong" success="right" />
+                  <MDBInput onChange = {(e)=> this.setState({content: e.target.value})} name = "content" type="textarea" rows="2" label="Your message" icon="pencil-alt" />
+                </div>
+
+                
+                
+                
+                <div className="text-center">
+                  <MDBBtn outline color="secondary"  type="submit">
+                    Submit Progress Report
+                    <MDBIcon far icon="paper-plane" className="ml-1" />
+                  </MDBBtn>
+                </div> 
+                
+              </form>
+            </MDBCol>
+          </MDBRow>
           
 
-
-
-
-<span className = "edit-progress-form">
-  <h1>Edit Progress Form</h1>
-  <form onSubmit={(e) => this.handleEdit(e, this.props.id)} className="edit-newProgres-form" >
-
-   <input onChange = {(e)=> this.setState({name: e.target.value})} value = {this.state.name} type="text" name="name" placeholder= {this.props.name} />
-    <br/>
-    <input onChange = {(e)=> this.setState({date: e.target.value})} value = {this.state.date} type="text" name="date" placeholder={this.props.date}  />
-    <br/>
-    <input onChange = {(e)=> this.setState({quiz: e.target.value})} value = {this.state.quiz} type="text" name="quiz" placeholder={this.props.quiz} />
-    <br/>
-    <input onChange = {(e)=> this.setState({content: e.target.value})} value = {this.state.content} type="text" name="content" placeholder={this.props.content}  />
-    <br/>
-    <input type="submit" name="submit" value="Edit Progress Form" className="submit"/>
-
-</form>
-</span>
-</div>
-
           
-          
-        );
-     }
+  
+<MDBRow className="edit-progress-form"   >
+  <MDBCol md="6">
+    <form onSubmit={(e) => this.handleEdit(e, this.props.id)} className="edit-newProgres-form">
+      <p className="h5 text-center mb-4">Edit Progress Report</p>
+      <div className="grey-text">
+        <MDBInput onChange = {(e)=> this.setState({name: e.target.value})} value = {this.state.name} name ="name" label= {this.props.name} icon="user" group type="text" validate error="wrong"
+          success="right" />
+        <MDBInput onChange = {(e)=> this.setState({date: e.target.value})}  value = {this.state.date} name ="date" label= {this.props.date} icon="far fa-calendar" group type="text" validate error="wrong"
+          success="right" />
+        <MDBInput onChange = {(e)=> this.setState({quiz: e.target.value})} value = {this.state.quiz} name ="quiz" label= {this.props.quiz} icon="far fa-file-alt" group type="text" validate error="wrong" success="right" />
+        <MDBInput onChange = {(e)=> this.setState({content: e.target.value})} value = {this.state.content} name = "content" type="textarea" rows="2" label= {this.props.content} icon="pencil-alt" />
+      </div>
       
+      <div className="text-center">
+        <MDBBtn outline color="secondary"  type="submit">
+          Edit Progress Report
+          <MDBIcon far icon="paper-plane" className="ml-1" />
+        </MDBBtn>
+        
+      </div> 
+    </form>
+  </MDBCol>
+</MDBRow>
+
+
+</MDBContainer>  
+
+     
+        )
       }
+    }
+
+
+
    
   
 
 export default ProgressForm
-
-
-// (this.state.name.length > 1 ? editProgressForm.name = this.state.name: null)
-//       (this.state.date.length > 1 ? editProgressForm.date = this.state.date : null)
-//       (this.state.quiz.length > 1 ? editProgressForm.quiz = this.state.quiz : null)
-//       (this.state.content.length > 1 ? editProgressForm.content = this.state.content : null)
