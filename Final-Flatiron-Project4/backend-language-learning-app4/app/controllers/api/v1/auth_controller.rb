@@ -30,6 +30,7 @@ class Api::V1::AuthController < ApplicationController
       #  render json: { user: @user, jwt: @token}
       
     else
+      
       # Vague error message for user security (never tell someone they got a specific input incorrect), adding a status code 
       render json: { message: 'Invalid username or password' }, status: :unauthorized
     end

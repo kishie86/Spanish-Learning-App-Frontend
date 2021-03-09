@@ -8,11 +8,12 @@ class AboutUs  extends Component {
         return (
     <div className="about-us" className = "row justify-content-center" >
 
-    
         <h1>
         Libby's Language Learning App
         </h1> 
-  
+    
+
+ 
   
 
     <p> 
@@ -23,6 +24,7 @@ class AboutUs  extends Component {
    use right away.  Libby's Language Learning App is the shortest path to real-life conversations; 80% of our users indicated that they’d be able 
    to have a short, simple conversation in their new language within five hours of using Libby's.
     </p>
+        <img className="world-map" src = "/images/MostSpokenLanguagesWorld.jpg"></img>
 
    </div> 
 

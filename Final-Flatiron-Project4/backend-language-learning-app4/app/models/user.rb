@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :spanish_languages, through: :user_languages
     has_many :spanish_words, through: :spanish_languages
 
-    validates :email, uniqueness:  { case_sensistive: false}
-    validates :username, uniqueness: { case_sensistive: false}
+    validates :email, uniqueness:  true
+    validates :username, uniqueness: true
+    validates :email, :username, presence: true
 end

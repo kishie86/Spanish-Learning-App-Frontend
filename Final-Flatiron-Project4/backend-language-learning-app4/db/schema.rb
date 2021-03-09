@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_060833) do
 
   create_table "spanish_languages", force: :cascade do |t|
     t.string "name"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

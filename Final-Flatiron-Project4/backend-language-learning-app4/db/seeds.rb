@@ -18,7 +18,18 @@ u1 = User.create(username: "Kishana Liburd", email: "kishana.liburd@gmail.com", 
 u2 = User.create(username: "Richard Gaston", email: "richard@gaston.com", password: "cloud")
 u3 = User.create(username: "Timothy Richard", email: "timrichard@ricard.com", password: "cloud")
 
-sl1 = SpanishLanguage.create(name: "Spanish")
+sl1 = SpanishLanguage.create(name: "Spanish", image: "https://i.pinimg.com/originals/91/1d/7d/911d7d6eeb2125b17d099a264d68c7dc.jpg")
+sl2 = SpanishLanguage.create(name: "French", image: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png")
+sl3 = SpanishLanguage.create(name: "Portuguese", image: "https://mdnautical.com/24103/portugal-courtesy-flag.jpg")
+sl4 = SpanishLanguage.create(name: "German", image: "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg")
+sl5 = SpanishLanguage.create(name: "Italian", image: "https://cdn11.bigcommerce.com/s-ey7tq/images/stencil/760x760/products/3332/18818/italy-flag__19720.1575335174.jpg?c=2")
+sl6 = SpanishLanguage.create(name: "Swedish", image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/1200px-Flag_of_Sweden.svg.png")
+sl7 = SpanishLanguage.create(name: "Turkish", image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Flag_of_Turkey.png")
+sl8 = SpanishLanguage.create(name: "Dutch", image: "https://cdn.britannica.com/82/2982-004-ABEB3852/flag-prototype-Netherlands-countries-European-flags.jpg")
+sl9 = SpanishLanguage.create(name: "Indonesian", image: "https://cdn.britannica.com/48/1648-004-A33B72D8/Flag-Indonesia.jpg")
+sl10 = SpanishLanguage.create(name: "Danish", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/1200px-Flag_of_Denmark.svg.png")
+
+
 
 ul1 = UserLanguage.create(spanish_language_id: sl1.id, user_id: u1.id)
 ul2 = UserLanguage.create(spanish_language_id: sl1.id, user_id: u2.id)

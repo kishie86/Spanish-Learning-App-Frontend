@@ -14,10 +14,10 @@ import {useHistory} from "react-router-dom"
 
   
     return (
-      <div className="spanish-lang-card" >
+      <div className="spanish-lang-card" className="block-example border border-secondary" style= {{width:300}} >
     
     
-        <h2 class="my-5 h2" onClick = {handleRoute}> {props.spanish_language.name}</h2>
+        <h2 className="row justify-content-center my-4 h2"   onClick = {handleRoute}> <strong>{props.spanish_language.name}</strong></h2>
         <h2> <img src={props.spanish_language.image} style={{width:300}} class="rounded-circle z-depth-2"/></h2>
        
         

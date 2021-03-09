@@ -13,6 +13,7 @@ class ProgressFormCard extends Component {
           <br/>
         
         <h2> <strong>{this.props.progress_form.name}</strong> </h2>
+        <br/>
         <h2>Date: {this.props.progress_form.date}</h2>
         <h2>{this.props.progress_form.quiz}</h2>
         <br/>

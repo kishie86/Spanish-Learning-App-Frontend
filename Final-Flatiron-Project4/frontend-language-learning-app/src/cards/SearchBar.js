@@ -4,7 +4,8 @@ class SearchBar extends React.Component {
   render(){
   return (
 
-    <div className="search-bar-card">
+    <div className="search-bar-card"  className="row justify-content-center"> 
+
       <input onChange={(e) => this.props.searchBar(e.target.value)}
         type="text"
         placeholder= {"Search For Language"}

@@ -31,7 +31,7 @@ correctValue = () => {
     return (
 
 
-      <div className="word-card">
+      <div className="word">
     
         <body>
         <h2 onClick={()=> this.props.clickAction(this.props.word)}> {this.props.word.english_word}</h2>

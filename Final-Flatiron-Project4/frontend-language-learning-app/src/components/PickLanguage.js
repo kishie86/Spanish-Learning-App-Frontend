@@ -4,10 +4,21 @@ import SearchBar from '../cards/SearchBar'
 function PickLanguage(props) {
     return( 
 
- 
-    <div className = "spanish-lang-container" >
+        
+        <div  >
 
-    <SearchBar searchBar={props.searchBar} />    
+
+        <SearchBar searchBar={props.searchBar} />  
+        <br/>
+
+          <h1 className="row justify-content-center"><strong>Let's Start Learning.  </strong></h1> 
+          <br/>
+          <h1 className="row justify-content-center"> Which language would you like to learn? </h1> 
+
+        <div className = "spanish-lang-container"> 
+
+      
+
     {
     props.spanish_languages.map((spanish_language) => { 
     return <SpanishLanguageCard spanish_language={spanish_language}
@@ -16,6 +27,7 @@ function PickLanguage(props) {
 })
 
 }
+</div>
 
 </div>
 

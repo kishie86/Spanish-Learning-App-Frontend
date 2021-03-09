@@ -99,18 +99,45 @@ p{
 
 .spanish-lang-card {
   padding-top: 100px;
+  
+  
 }
 
+.spanish-lang-container {
+  float: center;
+  align-content: space-around;
+  padding-top: 100px;
 
+  flex-wrap: wrap;
+  display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+
+}
 .word-card {
+
+  float: center;
+  align-content: space-around;
+  padding-top: 100px;
+
+  flex-wrap: wrap;
+  display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+
+}
+
+.card-deck {
   padding-top: 100px;
 }
 
 .progress-form-card {
   padding-top: 50px;
   flex-wrap: wrap;
-
-
  
 }
 
@@ -125,9 +152,6 @@ p{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
-
-  
- 
  
 }
 
@@ -182,6 +206,21 @@ p{
   padding-bottom: 50px;
   display: flex;
   justify-content: space-around;
+}
+
+.world-map{
+  
+    height: 100%;
+    width: 100%; 
+    display: flex;
+  
+
+    flex-wrap: wrap;
+    display: flex;
+  
+    display: grid;
+    grid-gap: 40px;
+
 }
 
 
