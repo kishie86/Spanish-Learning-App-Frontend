@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import SignInForm from './SignInForm'
 import {Formik} from "formik"
@@ -131,6 +133,7 @@ class signup extends Component {
 
 
     <div className="text-center mt-4">
+    
                 <MDBBtn
                   color="light-blue"
                   className="mb-3"
@@ -138,6 +141,7 @@ class signup extends Component {
                 >
             Signup
                 </MDBBtn>
+              
      </div>
         </form>
        
@@ -147,7 +151,9 @@ class signup extends Component {
 </MDBCard>
 </MDBCol>
 </MDBRow>
+<NavLink to="login"><button class="btn btn-outline-secondary"> <strong>Login After Signup</strong></button></NavLink>
 </MDBContainer>
+
 
     );
   }

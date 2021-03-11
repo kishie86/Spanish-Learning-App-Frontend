@@ -19,10 +19,7 @@ class ProgressForm extends Component {
         date: "",
         quiz: "",
         content: "",
-        id: null
-        
-       
-        
+        id: null  
       }
 
 
@@ -38,8 +35,6 @@ class ProgressForm extends Component {
           quiz: this.state.quiz,
           content: this.state.content,
           id: this.state.id
-          
-          
           
       }
 
@@ -155,16 +150,12 @@ class ProgressForm extends Component {
   </MDBCol>
 </MDBRow>
 
-
 </MDBContainer>  
 
      
         )
       }
     }
-
-
-
    
   
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Tutors from "../container/Tutors"
 
 
 class Help  extends Component {
@@ -6,14 +7,13 @@ class Help  extends Component {
      return (
     <div className="help" className = "justify-content-center">
 <h1>Meet Our Tutors</h1>
-<p>
+
 <h2>Need extra help? Contact one of our trusted Tutors Today!</h2>
 <hr/>
 
-<li>
-Render Tutor Cards here
-</li>
-</p>
+<Tutors tutors={this.props.tutors}/>
+
+
 <hr/>
     
 <h1>

@@ -6,8 +6,7 @@ function PickLanguage(props) {
 
         
         <div  >
-
-
+          
         <SearchBar searchBar={props.searchBar} />  
         <br/>
 

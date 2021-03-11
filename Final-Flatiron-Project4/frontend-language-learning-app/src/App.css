@@ -66,9 +66,7 @@ p{
   padding: 100px;
 }
 
-.please-log-in{
-  padding:100px;
-}
+
 
 .home-page {
   padding-top: 100px;
@@ -154,6 +152,19 @@ p{
   grid-gap: 40px;
  
 }
+.tutor-card{
+  float: center;
+  align-content: space-around;
+  padding-top: 100px;
+
+  flex-wrap: wrap;
+  display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+ 
+}
 
 .form-container {
   padding-top: 100px;
@@ -186,7 +197,7 @@ p{
 }
 
 .login {
-  padding-top: 0px;
+  padding-top: 100px;
   padding-bottom: 50px;
   display: flex;
   justify-content: space-around 
@@ -197,7 +208,7 @@ p{
   padding-top: 50px;
   display: flex;
   justify-content: space-around;
-
+  
 }
 
 .signup{

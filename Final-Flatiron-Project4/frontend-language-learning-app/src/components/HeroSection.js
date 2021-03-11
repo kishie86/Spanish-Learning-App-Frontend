@@ -6,8 +6,8 @@ function HeroSection(){
     return (
         <div className= 'hero-container'>
             <video src = 'videos/video-2.mp4' autoPlay loop muted />
-            <h1>Welcome to Libby's Language Learning App</h1>
-            <p>Love the Language you Speak!</p>
+            <strong><h1 style={{color: "white"}}>Welcome to Libby's Language Learning App </h1></strong>
+            <h4 style={{color: "white"}}>Love the Language you Speak!</h4>
             <Button className = 'btns' buttonStyle='btn--outline'
             buttonSize= 'btn--large'
             >

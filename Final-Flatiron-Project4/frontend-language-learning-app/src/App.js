@@ -12,6 +12,7 @@ import Help from "./components/Help"
 import AuthDemo from "./authdemo";
 import NavBar from "./cards/NavBar"
 import StoredWords from "./container/StoredWords"
+import Tutors from "./container/Tutors"
 import editForm from "./components/editForm"
 
 import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
@@ -23,6 +24,7 @@ class App extends Component {
   state = {
     spanish_languages: [],
     words: [],
+    tutors: [],
     searchText: "",
     progress_forms: [],
     storedWords: [],
@@ -71,12 +73,12 @@ class App extends Component {
   homeGreeting = () => {
     if (this.state.loggedIn) {
       return (
-        <div className = "please-log-in">
-        <h4 className="greeting-text">
+        
+        <h1 className = "please-log-in" className="greeting-text" className ="row justify-content-center">
 
-          Welcome back {this.state.user.username}!
-        </h4>
-        </div>
+        Welcome back {this.state.user.username}!
+        </h1>
+        
       );
     } 
   };
@@ -127,8 +129,14 @@ class App extends Component {
         progress_forms: pfData
       
       }))
-    }
 
+      fetch("http://localhost:3000/api/v1/tutors")
+      .then(res => res.json())
+      .then(tData => this.setState({
+        tutors: tData
+      
+      }))
+    }
 
     searchBar = (text) => {
 
@@ -156,7 +164,9 @@ class App extends Component {
             progress_forms: this.state.progress_forms.filter(pf_form => pf_form != progress_form)
           })
         })
+        
 
+      
       
     }
 
@@ -197,27 +207,23 @@ class App extends Component {
       <div className="main-div">
        
         <BrowserRouter>
-      
-
        
         <NavBar logOut= {this.logOut}  loggedIn={this.state.loggedIn}/>
-
-         
-       
 
 
           <Switch>
 
-    
-
-
             <Route exact path="/" component={Home}>
-            {this.homeGreeting()}
+             
+              {this.homeGreeting()}
+           
               <Home loggedIn={this.state.loggedIn} />
             </Route>
 
             <Route exact path="/login">
+
             {this.displayGreeting()}
+            
               {this.state.loggedIn ? (
                 <Redirect to="/" />
               ) : (
@@ -237,6 +243,7 @@ class App extends Component {
               </Route>
 
             <Route  exact path="/PickLanguage">
+        
               <PickLanguage searchBar = {this.searchBar} spanish_languages={filteredLanguage}  />
               </Route>
 
@@ -268,7 +275,8 @@ class App extends Component {
 
 
               <Route exact path="/help">
-              <Help />
+              <Help tutors={this.state.tutors}   />
+              
               </Route>
 
 
