@@ -16,6 +16,7 @@
     "material-design-icons": "^3.0.1",
     "mdbreact": "^5.0.1",
     "react": "^17.0.1",
+    "react-awesome-stars-rating": "^0.3.0",
     "react-dom": "^17.0.1",
     "react-native-video": "^5.1.1",
     "react-router-dom": "^5.2.0",

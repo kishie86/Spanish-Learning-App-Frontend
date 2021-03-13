@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactStars from '../ReusableComponents/ReactStars'
 
 
 
@@ -8,44 +9,49 @@ export default class TutorCard extends Component {
   state= {
 
     review: "",
-    name: "",
-    image: "",
-    language: "",
-    bio: "",
-    years_of_experience:"",
     user_id: "",
-  }
-  
-  
-  
-  handleSubmit(e) {
-  
-    e.preventDefault()
-    //console.log(this.state)
-    let newReview = {
-      review: this.state.review,
-     
-    }
-  
-  
-      
-    let reqObj = {}
-    reqObj.headers = {"Content-Type":"application/json"}
-    reqObj.method = "POST"
-    reqObj.body = JSON.stringify(newReview)
-    console.log(reqObj)
-  
-  
-  fetch('http://localhost:3000/api/v1/tutors', reqObj)
-  .then(res => res.json())
-  .then(newReview =>
-    this.props.addTutorCard(newReview))
-    e.target.reset()
-  
-  
+    id: null  
   }
 
+
+  addToTutorReview = (newReview) => {
+    if(!this.state.review.includes(newReview))
+   this.setState({
+    review: [...this.state.review, newReview]
+   })
+    
+  }
+  
+  
+  handleEdit(e, id){
+       
+
+    let editTutorReview = {
+      review: this.state.review,
+      user_id: this.state.user_id,
+      id: this.state.id
+      
+  }
+
+
+  let reqObj = {}
+        reqObj.headers = {"Content-Type":"application/json"}
+        reqObj.method = "PATCH"
+        reqObj.body = JSON.stringify(editTutorReview)
+        console.log(reqObj)
+      
+    
+      fetch(`http://localhost:3000/api/v1/tutors'/${id}`, reqObj)
+      .then(res => res.json())
+      .then(editTutor =>
+        this.props.addToTutorReview(editTutor))
+        e.target.reset()
+      }
+
+
     render() {
+
+      
 
         return (
     
@@ -64,10 +70,17 @@ export default class TutorCard extends Component {
             <br/>
             <h4><strong>Student Review:</strong></h4>
             <h5>{this.props.tutor.review}</h5>
-            <footer><a href="#!" class="btn btn-secondary">Leave a Review</a></footer>
+            <button type="button" class="btn btn-outline-warning">Schedule a Meeting</button>
+            <br/>
+            <button class="btn btn-secondary" >Leave a Review</button>
+            <br/>
+            <footer><a onClick = {() => this.props.handleEditTutorReview (this.props.tutor.review)} href="#!" class="btn btn-outline-secondary">Edit Review</a></footer>
+            <textarea onChange = {(e)=> this.setState({review: e.target.value})} value = {this.state.review} name = "review" type="textarea" label= {this.props.review}></textarea>
             <br>
             </br>
+            <ReactStars/>
            </div>
+           
           </div>
         )
       }

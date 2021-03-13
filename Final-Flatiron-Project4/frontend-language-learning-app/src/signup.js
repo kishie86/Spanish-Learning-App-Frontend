@@ -151,7 +151,7 @@ class signup extends Component {
 </MDBCard>
 </MDBCol>
 </MDBRow>
-<NavLink to="login"><button class="btn btn-outline-secondary"> <strong>Login After Signup</strong></button></NavLink>
+<NavLink to="login"  className = "row justify-content-center" ><button  class="btn btn-outline-secondary" > <strong>Please Login After Signup</strong></button></NavLink>
 </MDBContainer>
 
 

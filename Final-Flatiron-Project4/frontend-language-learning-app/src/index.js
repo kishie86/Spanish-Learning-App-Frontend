@@ -2,12 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import ReactStarsRating from 'react-awesome-stars-rating';
 import reportWebVitals from './reportWebVitals';
 
+
+const onChange = (value) => {
+  console.log(`React Stars Rating value is ${value}`);
+};
+
+const ReactStarsExample = ({ value }) => {
+  return <ReactStarsRating onChange={onChange} value={value} />;
+};
+
+
+
 ReactDOM.render(
+ 
   <React.StrictMode>
     <App />
+   
   </React.StrictMode>,
   document.getElementById('root')
 );

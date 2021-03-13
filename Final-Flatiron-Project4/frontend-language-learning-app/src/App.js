@@ -35,7 +35,8 @@ class App extends Component {
     date: "",
     quiz: "",
     content: "",
-    id: null
+    id: null,
+    
   };
 
   setCurrentUser = (user) => {
@@ -180,6 +181,8 @@ class App extends Component {
       })
     }
 
+  
+
 
     addToStoredWords = (word) => {
       if(!this.state.storedWords.includes(word))
@@ -275,7 +278,9 @@ class App extends Component {
 
 
               <Route exact path="/help">
-              <Help tutors={this.state.tutors}   />
+              <Help tutors={this.state.tutors} 
+              
+              />
               
               </Route>
 

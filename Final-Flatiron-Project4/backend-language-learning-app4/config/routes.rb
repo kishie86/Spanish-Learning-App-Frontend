@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :spanish_languages
   resources :user_languages
   resources :progress_forms
+  resources :tutors
   post '/login', to: 'auth#create'
    
 

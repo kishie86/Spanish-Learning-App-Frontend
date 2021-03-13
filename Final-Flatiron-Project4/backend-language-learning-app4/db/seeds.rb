@@ -12,6 +12,7 @@ SpanishLanguage.destroy_all
 UserLanguage.destroy_all
 Word.destroy_all
 ProgressForm.destroy_all
+Tutor.destroy_all
 
 
 u1 = User.create(username: "Kishana Liburd", email: "kishana.liburd@gmail.com", password: "cloud")
@@ -50,6 +51,13 @@ sw10 = Word.create(image: "https://secure.img1-fg.wfcdn.com/im/19556338/resize-h
 pf1 = ProgressForm.create(name:"Kishana Liburd", date:"01-08-2021", quiz: "Quiz 1", content:"Would love to learn more verbs by next week.")
 pf2 = ProgressForm.create(name:"Richard Gaston", date:"01-17-2021", quiz: "Quiz 1", content:"Would love to practive full sentences.")
 pf3 = ProgressForm.create(name:"Timothy Richard", date:"02-12-2021", quiz: "Quiz 1", content:"Need to improve. I have some more studying to do.",)
+
+
+t1 = Tutor.create(name: "Mehgan Thorpe", image: "https://media.istockphoto.com/photos/headshot-portrait-of-happy-mixed-race-african-girl-wearing-glasses-picture-id1144287292?k=6&m=1144287292&s=612x612&w=0&h=TEozTUFd35gfoot-wiyhqGmLf5xR1gjn-Kah8GRyxak=", language: "Spanish", bio: "Studied at Harvard Universiy. Lived in Mexico for 10 years.", years_of_experience: "10", review: "One of the Best Teachers!", user_id: u1.id )
+t2 = Tutor.create(name: "David Miller", image: "https://i.pinimg.com/originals/85/b9/2f/85b92f0535a3ad00ac8307b1be57e1b6.jpg", language: "French", bio: "Studied at Yale University. French is my first language.", years_of_experience: "15", review: "Great at helping you learn the perfect dialect!", user_id: u2.id )
+t3 = Tutor.create(name: "Michael O'Conner", image: "https://cbmcfresno.com/wp-content/uploads/2019/10/cbmc-one-another-christ-MAN-652x1024.png", language: "Dutch", bio: "Studied at the University of Texas. Was a Dutch professor for many years, but since retired.", years_of_experience: "25", review: "Great teacher if you really want to learn Dutch", user_id: u3.id )
+t4 = Tutor.create(name: "Justin Heigle", image: "https://www.nicepng.com/png/detail/7-77391_businessman-transparent-business-man-png.png", language: "German", bio: "Studied at the Universy of London. Born in Germany", years_of_experience: "12", review: "Help you pick on concepts real quick!", user_id: u1.id )
+t5 = Tutor.create(name: "Teressa Palone", image: "https://www.quickanddirtytips.com/sites/default/files/styles/host_in_header/public/Mignon%20Fogarty%20Headshot%20-%20Final_0.png?itok=jTjs9X1j", language: "Italian", bio: "Studied at the University of Pennsylvania. Traveled back and forth the Italy for 15 years." , years_of_experience: "8", review: "You can tell she's passionate about her job!", user_id: u2.id )
 
 
 

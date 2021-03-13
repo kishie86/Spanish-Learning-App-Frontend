@@ -12,7 +12,7 @@ class NavBar extends Component {
 
 
     <div>
-<Link className="logo">
+<Link to="" className="logo">
   
 <h4>Libby's </h4>
 </Link>
@@ -47,13 +47,15 @@ class NavBar extends Component {
  SignUp
 </Link>
 
+
+
 {this.props.loggedIn ? (
  <span className="pretty-link">
  
 
- <button onClick={this.props.logOut}>Log Out</button>
+ <  button onClick={this.props.logOut}>Log Out</button> 
  </span>
-) : null}
+) : <Redirect to="/" />}
 
 
 </nav>
